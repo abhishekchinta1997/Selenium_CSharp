@@ -1,0 +1,5 @@
+C:\Users\Abhis\source\repos\Selenium_CSharp\SeleniumWithCSharp\E_Commerce_Project\obj\Debug\net8.0\E_Commerce_Project.csproj.AssemblyReference.cache
+C:\Users\Abhis\source\repos\Selenium_CSharp\SeleniumWithCSharp\E_Commerce_Project\obj\Debug\net8.0\E_Commerce_Project.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Abhis\source\repos\Selenium_CSharp\SeleniumWithCSharp\E_Commerce_Project\obj\Debug\net8.0\E_Commerce_Project.AssemblyInfoInputs.cache
+C:\Users\Abhis\source\repos\Selenium_CSharp\SeleniumWithCSharp\E_Commerce_Project\obj\Debug\net8.0\E_Commerce_Project.AssemblyInfo.cs
+C:\Users\Abhis\source\repos\Selenium_CSharp\SeleniumWithCSharp\E_Commerce_Project\obj\Debug\net8.0\E_Commerce_Project.csproj.CoreCompileInputs.cache
