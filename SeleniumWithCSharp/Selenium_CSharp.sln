@@ -5,8 +5,6 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E_Commerce_Project", "E_Commerce_Project\E_Commerce_Project.csproj", "{455FE605-1E37-467F-A4CE-A81C0814E887}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp_Programs", "CSharp_Programs\CSharp_Programs.csproj", "{EE3A7C43-F25C-4213-80CA-DD82964D5009}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApiAutomationTests", "RestApiAutomationTests\RestApiAutomationTests\RestApiAutomationTests.csproj", "{FDCB29D1-B666-4AA8-98C3-7CF66C30A36E}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{455FE605-1E37-467F-A4CE-A81C0814E887}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{455FE605-1E37-467F-A4CE-A81C0814E887}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{455FE605-1E37-467F-A4CE-A81C0814E887}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EE3A7C43-F25C-4213-80CA-DD82964D5009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE3A7C43-F25C-4213-80CA-DD82964D5009}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE3A7C43-F25C-4213-80CA-DD82964D5009}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EE3A7C43-F25C-4213-80CA-DD82964D5009}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FDCB29D1-B666-4AA8-98C3-7CF66C30A36E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FDCB29D1-B666-4AA8-98C3-7CF66C30A36E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDCB29D1-B666-4AA8-98C3-7CF66C30A36E}.Release|Any CPU.ActiveCfg = Release|Any CPU
