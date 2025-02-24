@@ -14,44 +14,8 @@ namespace Practice_Project.Utilities.Base
 {
     public class BaseClass
     {
-        string browserName;
 
-        [OneTimeSetUp]
-        public void Setup()
-        {
-            //ExtentTestManager.CreateParentTest(GetType().Name);
-        }
-
-
-        [OneTimeTearDown]
-        public void TearDown()
-        {
-            ExtentManager.Instance.Flush();
-        }
-
-
-        // public IWebDriver driver;
         public ThreadLocal<IWebDriver> driver = new();
-
-
-        [SetUp]
-        public void StartBrowser()
-        {
-            string parentName = GetType().FullName ?? "Unknown";
-            ExtentTestManager.CreateTest(parentName, TestContext.CurrentContext.Test.Name);
-
-            //Configuration
-            browserName = TestContext.Parameters["browserName"] ?? ConfigurationManager.AppSettings["browser"]!;
-
-            if (string.IsNullOrEmpty(browserName))
-            {
-                throw new ArgumentException("Browser name cannot be null or empty", nameof(browserName));
-            }
-            InitBrowser(browserName);
-            GetDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-            GetDriver().Manage().Window.Maximize();
-        }
-
         public IWebDriver GetDriver()
         {
             if (driver.Value == null)
@@ -62,8 +26,28 @@ namespace Practice_Project.Utilities.Base
             return driver.Value;
         }
 
-        public void InitBrowser(string browserName)
+
+        [OneTimeSetUp]
+        public void Setup()
         {
+            //ExtentTestManager.CreateParentTest(GetType().Name);
+        }
+
+
+        [SetUp]
+        public void StartBrowser()
+        {
+            string parentName = GetType().FullName ?? "Unknown";
+            ExtentTestManager.CreateTest(parentName, TestContext.CurrentContext.Test.Name);
+
+            //Configuration
+            string browserName = TestContext.Parameters["browserName"] ?? ConfigurationManager.AppSettings["browser"]!;
+
+            if (string.IsNullOrEmpty(browserName))
+            {
+                throw new ArgumentException("Browser name cannot be null or empty", nameof(browserName));
+            }
+
             switch (browserName)
             {
                 case "Firefox":
@@ -77,11 +61,15 @@ namespace Practice_Project.Utilities.Base
                 case "Edge":
                     driver.Value = new EdgeDriver();
                     break;
+                default:
+                    throw new ArgumentException(nameof(browserName));
             }
+
+            // GetDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            GetDriver().Manage().Window.Maximize();
         }
 
-
-
+        
         [TearDown]
         public void AfterTest()
         {
@@ -127,6 +115,14 @@ namespace Practice_Project.Utilities.Base
 
             GetDriver().Quit();
         }
+
+
+        [OneTimeTearDown]
+        public void TearDown()
+        {
+            ExtentManager.Instance.Flush();
+        }
+
 
         public static Media CaptureScreenShot(IWebDriver driver, string screenShotName)
         {
