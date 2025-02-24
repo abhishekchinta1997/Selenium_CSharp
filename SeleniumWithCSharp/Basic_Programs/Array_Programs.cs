@@ -27,7 +27,7 @@ namespace Basic_Programs
                             arr[j] = int.MinValue;
                         }
                     }
-                    TestContext.WriteLine(c + " appeared " + count + " times");
+                    TestContext.Out.WriteLine(c + " appeared " + count + " times");
                 }
             }
         }

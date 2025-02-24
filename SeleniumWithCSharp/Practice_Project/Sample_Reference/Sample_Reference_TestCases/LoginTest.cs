@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 using NUnit.Framework.Legacy;
 using E_Commerce_Project.Sample_Reference.Sample_Reference_PageObjects;
 
-namespace E_Commerce_Project.Sample_Reference.Sample_Reference_TestCases
+namespace Practice_Project.Sample_Reference.Sample_Reference_TestCases
 {
     public class LoginTest
     {

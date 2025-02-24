@@ -22,7 +22,7 @@ namespace Basic_Programs
                             strArray[j] = '0';
                         }
                     }
-                    TestContext.WriteLine(c + " appeared " + count + " times");
+                    TestContext.Out.WriteLine(c + " appeared " + count + " times");
                 }
             }
         }
@@ -52,7 +52,7 @@ namespace Basic_Programs
             {
                 if(entry.Value > 1)
                 {
-                    TestContext.WriteLine("Character: " + entry.Key + ", Count: " + entry.Value);
+                    TestContext.Out.WriteLine("Character: " + entry.Key + ", Count: " + entry.Value);
                 }
             }
         }
@@ -76,9 +76,9 @@ namespace Basic_Programs
                     letters = letters + c; 
                 }
             }
-            TestContext.WriteLine("Original String : " + str);
-            TestContext.WriteLine("Digits : " + digits);
-            TestContext.WriteLine("Letters : " + letters);
+            TestContext.Out.WriteLine("Original String : " + str);
+            TestContext.Out.WriteLine("Digits : " + digits);
+            TestContext.Out.WriteLine("Letters : " + letters);
         }
 
 
@@ -86,18 +86,18 @@ namespace Basic_Programs
         [Test]
         public void ReverseString()
         {
-            string str = "1a2b3c";
+            string str = "Hello World";
             string revStr = "";
             for(int i = str.Length-1; i >= 0; i--)
             {
                 revStr = revStr + str[i];
             }
-            TestContext.WriteLine("Original String : " + str);
-            TestContext.WriteLine("Reversed String : " + revStr);
+            TestContext.Out.WriteLine("Original String : " + str);
+            TestContext.Out.WriteLine("Reversed String : " + revStr);
         }
 
 
-        // Reverse String
+        // count chars
         [Test]
         public void CountChars()
         {
@@ -107,9 +107,53 @@ namespace Basic_Programs
             {
                 count++;
             }
-            TestContext.WriteLine("Original String : " + str);
-            TestContext.WriteLine("Count Chars : " + count);
+            TestContext.Out.WriteLine("Original String : " + str);
+            TestContext.Out.WriteLine("Count Chars : " + count);
         }
+
+
+        [Test]
+        public void CountCharsWithoutSpace()
+        {
+            string str = "Hello World!";
+            int count = 0;
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (str[i] != ' ') // Skip spaces
+                {
+                    count++;
+                }
+            }
+            TestContext.Out.WriteLine("Original String : " + str);
+            TestContext.Out.WriteLine("Count Chars (without spaces) : " + count);
+        }
+
+
+        [Test]
+        public void ShortestAndLongestWordInArray()
+        {
+            string[] words = { "BMW", "TATA", "Mahindra" };
+            List<string> wordsList = new List<string>(words);
+
+            string shortest = wordsList[0];
+            string longest = wordsList[0];
+
+            for (int i = 1; i < wordsList.Count; i++)
+            {
+                if (shortest.Length > wordsList[i].Length)
+                {
+                    shortest = wordsList[i];
+                }
+                if (longest.Length < wordsList[i].Length)
+                {
+                    longest = wordsList[i];
+                }
+            }
+
+            TestContext.Out.WriteLine("Shortest Word : " + shortest);
+            TestContext.Out.WriteLine("Longest Word : " + longest);
+        }
+
 
 
     }

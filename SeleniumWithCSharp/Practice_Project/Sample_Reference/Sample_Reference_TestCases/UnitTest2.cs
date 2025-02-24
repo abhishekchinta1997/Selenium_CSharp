@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Commerce_Project.Sample_Reference.Sample_Reference_TestCases
+namespace Practice_Project.Sample_Reference.Sample_Reference_TestCases
 {
     public class UnitTest2
     {

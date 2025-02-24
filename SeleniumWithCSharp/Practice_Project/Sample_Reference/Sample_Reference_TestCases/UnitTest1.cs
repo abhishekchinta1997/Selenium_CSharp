@@ -1,7 +1,7 @@
 ﻿using E_Commerce_Project.Sample_Reference.Sample_Reference_PageObjects;
-using E_Commerce_Project.Utilities;
+using Practice_Project.Utilities.Base;
 
-namespace E_Commerce_Project.Sample_Reference.Sample_Reference_TestCases
+namespace Practice_Project.Sample_Reference.Sample_Reference_TestCases
 {
     [TestFixture]
     [Parallelizable(ParallelScope.Children)]

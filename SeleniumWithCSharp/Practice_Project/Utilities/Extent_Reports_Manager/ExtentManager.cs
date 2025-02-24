@@ -41,15 +41,15 @@ namespace E_Commerce_Project.Utilities.Extent_Reports_Helpers
                     var htmlReporter = new ExtentSparkReporter(reportPath);
 
                     // Configure the properties of the report
-                    htmlReporter.Config.DocumentTitle = "Extent/NUnit Samples";  // Set the document title
-                    htmlReporter.Config.ReportName = "Extent/NUnit Samples";    // Set the report name
+                    htmlReporter.Config.DocumentTitle = "Extent Reports/NUnit";  // Set the document title
+                    htmlReporter.Config.ReportName = "Extent Reports/NUnit";    // Set the report name
                     htmlReporter.Config.Theme = Theme.Dark;  // Set the theme of the report to dark
 
                     // Attach the configured reporter to the ExtentReports instance
                     Instance.AttachReporter(htmlReporter);
 
                     // Add system information to the report (useful for reporting context)
-                    Instance.AddSystemInfo("Application", "E Commerce Project");
+                    Instance.AddSystemInfo("Application", "Practice Project");
                     Instance.AddSystemInfo("Environment", "QA");
                 }
                 else

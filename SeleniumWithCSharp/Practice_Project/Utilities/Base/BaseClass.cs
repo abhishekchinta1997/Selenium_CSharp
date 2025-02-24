@@ -10,7 +10,7 @@ using AventStack.ExtentReports.Model;
 using NUnit.Framework.Interfaces;
 using E_Commerce_Project.Utilities.Extent_Reports_Helpers;
 
-namespace E_Commerce_Project.Utilities
+namespace Practice_Project.Utilities.Base
 {
     public class BaseClass
     {
@@ -19,7 +19,7 @@ namespace E_Commerce_Project.Utilities
         [OneTimeSetUp]
         public void Setup()
         {
-            ExtentTestManager.CreateParentTest(GetType().Name);
+            //ExtentTestManager.CreateParentTest(GetType().Name);
         }
 
 
@@ -50,7 +50,6 @@ namespace E_Commerce_Project.Utilities
             InitBrowser(browserName);
             GetDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             GetDriver().Manage().Window.Maximize();
-            GetDriver().Url = "https://rahulshettyacademy.com/loginpagePractise/";
         }
 
         public IWebDriver GetDriver()
@@ -89,30 +88,41 @@ namespace E_Commerce_Project.Utilities
             var status = TestContext.CurrentContext.Result.Outcome.Status;
             var stackTrace = string.IsNullOrEmpty(TestContext.CurrentContext.Result.StackTrace)
                              ? ""
-                             : string.Format("<pre>{0}<pre>", "Stack Trace: " + "<br>" + TestContext.CurrentContext.Result.StackTrace + "<br>" + "Message: " + "<br>" + TestContext.CurrentContext.Result.Message);
+                             : string.Format("<pre>{0}</pre>",
+                                        "Message: " + "<br>" +
+                                        TestContext.CurrentContext.Result.Message +
+                                        "<br><br>" +
+                                        "Stack Trace: " + "<br>" +
+                                        TestContext.CurrentContext.Result.StackTrace);
 
             DateTime time = DateTime.Now;
-            string fileName = "Screenshot_" + time.ToString("h_mm_ss") + ".png";
+            string screenShot_name = "Screenshot_" + time.ToString("h_mm_ss") + ".png";
 
-            Status logstatus;
             if (status == TestStatus.Failed)
             {
-                logstatus = Status.Fail;
-                ExtentTestManager.GetTest()?.Fail("Test failed", CaptureScreenShot(GetDriver(), fileName));
+                // Apply red color formatting for the message and stack trace
+                string failureMessage = "<font color='red'>" + "Test failed" + "</font>";
+                string failureStackTrace = string.IsNullOrEmpty(stackTrace) ? "" : "<font color='red'>" + stackTrace + "</font>";
+
+                ExtentTestManager.GetTest()?.Fail(failureMessage, CaptureScreenShot(GetDriver(), screenShot_name));
+                if (!string.IsNullOrEmpty(stackTrace))
+                {
+                    ExtentTestManager.GetTest()?.Fail(failureStackTrace);
+                    ExtentTestManager.GetTest()?.Fail("Test Ended with Fail");
+                }
             }
             else if (status == TestStatus.Skipped || status == TestStatus.Warning || status == TestStatus.Inconclusive)
             {
-                logstatus = Status.Warning;
+                ExtentTestManager.GetTest()?.Warning("Test skipped");
+                if (!string.IsNullOrEmpty(stackTrace))
+                {
+                    ExtentTestManager.GetTest()?.Warning(stackTrace);
+                    ExtentTestManager.GetTest()?.Warning("Test Ended with Warning");
+                }
             }
-            else
+            else if (status == TestStatus.Passed)
             {
-                logstatus = Status.Pass;
-            }
-
-            ExtentTestManager.GetTest()?.Log(logstatus, "Test Ended with " + logstatus);
-            if (!string.IsNullOrEmpty(stackTrace))
-            {
-                ExtentTestManager.GetTest()?.Log(Status.Info, stackTrace);
+                ExtentTestManager.GetTest()?.Pass("Test Ended with Pass");
             }
 
             GetDriver().Quit();
@@ -126,7 +136,22 @@ namespace E_Commerce_Project.Utilities
         }
 
 
+        public static ExtentTest? LogPass(string msg)
+        {
+            return ExtentTestManager.GetTest()?.Pass(msg);
+            //return ExtentTestManager.GetTest();
+        }
 
+        public static ExtentTest? LogFail(string msg)
+        {
+            return ExtentTestManager.GetTest()?.Fail(msg);
+            //return ExtentTestManager.GetTest();
+        }
+
+        public static ExtentTest? LogInfo(String msg)
+        {
+            return ExtentTestManager.GetTest()?.Info(msg);
+        }
 
     }
 }

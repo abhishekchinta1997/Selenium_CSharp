@@ -92,6 +92,12 @@ namespace E_Commerce_Project.Utilities.Extent_Reports_Helpers
             }
         }
 
+        public static void ClearTest()
+        {
+            _parentTest.Value = null;
+            _childTest.Value = null;
+        }
+
 
     }
 }
